@@ -6,8 +6,16 @@ class sorting():
             for i in range(n):
                 if self.array[i]>self.array[i+1]:
                     self.array[i],self.array[i+1]=self.array[i+1],self.array[i]
+    def selection_sort(self):
+        for i in range(len(self.array)):
+            min_element=i
+            for j in range(i,len(self.array)):
+                if self.array[j]<self.array[min_element]:
+                    min_element=j
+            self.array[i],self.array[min_element]=self.array[min_element],self.array[i]
+
 a=[3,2,0,0,4,6]
 sorter=sorting(a)
-print(a)
-sorter.bubble_sort()
-print(a)
+print("Before sorting:",a)
+sorter.selection_sort()
+print("After sorting:",a)
