@@ -13,9 +13,17 @@ class sorting():
                 if self.array[j]<self.array[min_element]:
                     min_element=j
             self.array[i],self.array[min_element]=self.array[min_element],self.array[i]
+    def insertion_sort(self):
+        for i in range(1,len(self.array)):
+            key=self.array[i]
+            j=i-1
+            while j>=0 and key<self.array[j]:
+                self.array[j+1]=self.array[j]
+                j-=1
+            self.array[j+1]=key
 
 a=[3,2,0,0,4,6]
 sorter=sorting(a)
 print("Before sorting:",a)
-sorter.selection_sort()
+sorter.insertion_sort()
 print("After sorting:",a)
