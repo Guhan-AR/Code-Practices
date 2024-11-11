@@ -46,9 +46,27 @@ class sorting():
                 array[k]=right_arr[j]
                 j+=1
                 k+=1
+    def quick_sort(self):
+        def partition(array,low,high):
+            pivot=array[high]
+            i=low-1
+            for j in range(low,high):
+                if array[j]<pivot:
+                    i+=1
+                    swap(array,i,j)
+            swap(array,i+1,high)
+            return i+1
+        def swap(array,i,j):
+            array[i],array[j]=array[j],array[i]
+        def qs(array,low,high):
+            if low<high:
+                pivot=partition(array,low,high)
+                qs(array,low,pivot-1)
+                qs(array,pivot+1,high)
+        qs(self.array,0,len(self.array)-1)
 
 a=[3,2,0,0,4,6]
 sorter=sorting(a)
 print("Before sorting:",a)
-sorter.merge_sort()
+sorter.quick_sort()
 print("After sorting:",a)
