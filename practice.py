@@ -33,24 +33,201 @@
 #     return n + sum_to_n(n - 1)
 # print(sum_to_n(2))
 
-def partition(arr,low,high):
-    print(arr)
-    pivot=arr[high]
-    i=low-1
-    for j in range(low,high):
-        if arr[j]<pivot:
-            i+=1
-            swap(arr,j,i)
-    swap(arr,i+1,high)
-    return i+1
-def swap(arr,j,i):
-    arr[j],arr[i]=arr[i],arr[j]
-def quick_sort(arr,low,high):
-    if low<high:
-        pi=partition(arr,low,high)
-        quick_sort(arr,low,pi-1)
-        quick_sort(arr,pi+1,high)
-a=[1,8,5,3,9]
-print(a)
-quick_sort(a,0,len(a)-1)
-print("final:",a)
+# def partition(arr,low,high):
+#     print(arr)
+#     pivot=arr[high]
+#     i=low-1
+#     for j in range(low,high):
+#         if arr[j]<pivot:
+#             i+=1
+#             swap(arr,j,i)
+#     swap(arr,i+1,high)
+#     return i+1
+# def swap(arr,j,i):
+#     arr[j],arr[i]=arr[i],arr[j]
+# def quick_sort(arr,low,high):
+#     if low<high:
+#         pi=partition(arr,low,high)
+#         quick_sort(arr,low,pi-1)
+#         quick_sort(arr,pi+1,high)
+# a=[1,8,5,3,9]
+# print(a)
+# quick_sort(a,0,len(a)-1)
+# print("final:",a)
+
+# def open_close_brace_checks(b):
+#     stack=[]
+#     for i in b:
+#         if i in ["(","[","{"]:
+#             stack.append(i)
+#         elif (i=="]")and(stack[-1]!="[") or (i=="}") and (stack[-1]!="{") or (i==")") and (stack[-1]!="("):
+#             return False
+#         else:
+#             stack.pop()
+#     return not stack
+# a="({[]()})"
+# b="({]})"
+# c="()()()()[]"
+# d="[]{()}"
+# print(open_close_brace_checks(a))
+# print(open_close_brace_checks(b))
+# print(open_close_brace_checks(c))
+# print(open_close_brace_checks(d))
+
+# class Solution:
+#     def isValid(self, s: str) -> bool:
+#         stack=[]
+#         brace={")":"(","}":"{","]":"["}
+#         for i in s:
+#             print(stack)
+#             if i in brace.values():
+#                 stack.append(i)
+#             elif i in brace.keys():
+#                 if not stack or brace[i]!=stack.pop():
+#                     return False
+#         return not stack
+# sol=Solution()
+# print(sol.isValid(a))
+# print(sol.isValid(b))
+# print(sol.isValid(c))
+# print(sol.isValid(d))
+
+# def bubble_sort(arr):
+#     for i in range(len(arr)):
+#         for j in range(1,len(arr)):
+#             if arr[j]<arr[j-1]:
+#                 arr[j],arr[j-1]=arr[j-1],arr[j]
+# def swap(arr,i,j):
+#     arr[i],arr[j]=arr[j],arr[i]
+# def selection_sort(arr):
+#     for i in range(len(arr)-1):
+#         min_index=i
+#         for j in range(i+1,len(arr)):
+#             if arr[min_index]>arr[j]:
+#                 min_index=j
+#         swap(arr,min_index,i)
+# def merge_sort(arr):
+#     if len(arr)>1:
+#         left_arr=arr[:len(arr)//2]
+#         right_arr=arr[len(arr)//2:]
+#         merge_sort(left_arr)
+#         merge_sort(right_arr)
+#         i=j=k=0
+#         while i<len(left_arr) and j<len(right_arr):
+#             if left_arr[i]<right_arr[j]:
+#                 arr[k]=left_arr[i]
+#                 i+=1
+#             else:
+#                 arr[k]=right_arr[j]
+#                 j+=1
+#             k+=1
+#         while i<len(left_arr):
+#             arr[k]=left_arr[i]
+#             i+=1
+#             k+=1
+#         while j<len(right_arr):
+#             arr[k]=right_arr[j]
+#             j+=1
+#             k+=1
+# def insertion_sort(arr):
+#     for i in range(1,len(arr)):
+#         key=arr[i]
+#         j=i-1
+#         while j>=0 and key<arr[j]:
+#             arr[j+1]=arr[j]
+#             j-=1
+#         arr[j+1]=key
+# a=[0,4,2,6,8]
+# # insertion_sort(a)
+# # print(a)
+# def partition(arr,low,high):
+#     pivot=arr[high]
+#     i=low-1
+#     for j in range(low,high):
+#         if arr[j]<pivot:
+#             i+=1
+#             # swap(arr,j,i)
+#             arr[i],arr[j]=arr[j],arr[i]
+#         # swap(arr,high,i+1)
+#     arr[high],arr[i+1]=arr[i+1],arr[high]
+#     return i+1
+# def quick_sort(arr,low,high):
+#     if low < high:
+#         pivot=partition(arr,low,high)
+#         quick_sort(arr,low,pivot-1)
+#         quick_sort(arr,pivot+1,high)
+# a=[0,4,2,6,8]
+# quick_sort(a,0,len(a)-1)
+# print(a)
+
+# class Solution:
+#     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+#         i,j,k=m-1,n-1,m+n-1
+#         while i>=0 and j>=0:
+#             if nums1[i]>nums2[j]:
+#                 nums1[k]=nums1[i]
+#                 i-=1
+#                 k-=1
+#             else:
+#                 nums1[k]=nums2[j]
+#                 j-=1
+#                 k-=1
+#         while j>=0:
+#             nums1[k]=nums2[j]
+#             j-=1
+#             k-=1
+# a=[1,2,7,0,0,0]
+# b=[3,8,9]
+# sol=Solution()
+# sol.merge(a,3,b,3)
+# print(a)
+
+# class Solution:
+#     def removeDuplicates(nums: list[int]) -> int:
+#         if len(nums)<=2:
+#             return len(nums)
+#         write_index=2
+#         for i in range(2,len(nums)):
+#             if nums[i]!=nums[write_index-2]:
+#                 nums[write_index]=nums[i]
+#                 write_index+=1
+#         return write_index
+            
+
+            
+# a=Solution
+# c=[0,0,1,1,1,1,2,3,3]
+# b=a.removeDuplicates(c)
+# print(b) # output 7
+# print(c) # output [0,0,1,1,2,3,3]
+# print(c[:b])
+
+# class Solution:
+#     def majorityElement(self, nums: list[int]) -> int:
+#         d={}
+#         max_ele=count=0
+#         for i in nums:
+#             if i in d:
+#                 d[i]+=1
+#                 if d[i]>count:
+#                     count=d[i]
+#                     max_ele=i
+#             else:
+#                 d[i]=1
+#         return max_ele
+
+# Input: nums = [1,2,3,4,5,6,7], k = 3
+# Output: [5,6,7,1,2,3,4]
+# Explanation:
+# rotate 1 steps to the right: [7,1,2,3,4,5,6]
+# rotate 2 steps to the right: [6,7,1,2,3,4,5]
+# rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+class Solution:
+    def rotate(self, nums: list[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        k=len(nums)%k
+        print(k)
+sol=Solution()
