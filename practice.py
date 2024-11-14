@@ -223,11 +223,58 @@
 # rotate 2 steps to the right: [6,7,1,2,3,4,5]
 # rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
+# class Solution:
+#     def rotate(self, nums: list[int], k: int) -> None:
+#         """
+#         Do not return anything, modify nums in-place instead.
+#         """
+#         k=k%len(nums)
+#         nums=nums[len(nums)-k:]+nums[:len(nums)-k]
+#         print(nums)
+# sol=Solution()
+# sol.rotate([1,2,3,4,5,6],10)
+
+# Input: prices = [7,1,5,3,6,4]
+# Output: 5
+# Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+# Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+# class Solution:
+#     def maxProfit(self, prices: list[int]) -> int:
+#         max_prize=0
+#         min_prize=prices[0]
+#         for j in range(1,len(prices)):
+#             max_prize=max(max_prize,prices[j]-min_prize)
+#             min_prize=min(prices[j],min_prize)
+#         return max_prize
+# sol=Solution()
+# prices = [[7,1,5,3,6,4],[7,6,4,3,1]]
+# for i in prices:
+#     b=sol.maxProfit(i)
+#     print(b)
+# Example 1:
+# Input: prices = [7,1,5,3,6,4]
+# Output: 7
+# Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+# Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+# Total profit is 4 + 3 = 7.
+# Example 2:
+# Input: prices = [1,2,3,4,5]
+# Output: 4
+# Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+# Total profit is 4.
+# Example 3:
+# Input: prices = [7,6,4,3,1]
+# Output: 0
+# Explanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
+
 class Solution:
-    def rotate(self, nums: list[int], k: int) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        k=len(nums)%k
-        print(k)
-sol=Solution()
+    def maxProfit(self, prices: list[int]) -> int:
+        amount=0
+        for i in range(1,len(prices)):
+            if prices[i-1]<prices[i]:
+                amount+=prices[i]-prices[i-1]
+        return amount
+a=[6,1,3,2,4,7]
+s=Solution()
+b=s.maxProfit(a)
+print(b,7)
