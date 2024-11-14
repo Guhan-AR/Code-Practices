@@ -14,3 +14,10 @@ import pandas as pd
 # calories = {"day1": 420, "day2": 380, "day3": 390}
 # myvar = pd.Series(calories, index = ["day1", "day2"])
 # print(myvar)
+# a=pd.read_csv("cancer_patient_data_sets.csv")
+# print(a)
+a=pd.read_csv("cancer_patient_data_sets.csv")
+# print(a.to_string())
+print(pd.options.display.max_rows)
+pd.options.display.max_rows=10
+print(a)
