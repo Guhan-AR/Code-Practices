@@ -19,5 +19,5 @@ import pandas as pd
 a=pd.read_csv("cancer_patient_data_sets.csv")
 # print(a.to_string())
 print(pd.options.display.max_rows)
-pd.options.display.max_rows=10
+pd.options.display.max_rows=5
 print(a)

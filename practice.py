@@ -267,14 +267,29 @@
 # Output: 0
 # Explanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
 
+# class Solution:
+#     def maxProfit(self, prices: list[int]) -> int:
+#         amount=0
+#         for i in range(1,len(prices)):
+#             if prices[i-1]<prices[i]:
+#                 amount+=prices[i]-prices[i-1]
+#         return amount
+# a=[6,1,3,2,4,7]
+# s=Solution()
+# b=s.maxProfit(a)
+# print(b,7)
+# a=10
+# for i in range(a//2-1,-1,-1):
+#     print(i)
 class Solution:
-    def maxProfit(self, prices: list[int]) -> int:
-        amount=0
-        for i in range(1,len(prices)):
-            if prices[i-1]<prices[i]:
-                amount+=prices[i]-prices[i-1]
-        return amount
-a=[6,1,3,2,4,7]
+    def canJump(self, nums: list[int]) -> bool:
+        index=len(nums)-1
+        for i in range(len(nums)-2,-1,-1):
+            print("for loop:",i)
+            print("index:",index,"i+nums[i]",i+nums[i])
+            if index == i + nums[i]:
+                print("varuthu ippo:",i)
+                index=i
+        return index == 0
 s=Solution()
-b=s.maxProfit(a)
-print(b,7)
+print(s.canJump([2,3,1,1,4]))
