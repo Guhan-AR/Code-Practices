@@ -1,0 +1,12 @@
+Title: Room Rent Budgetting
+Desription: This is the code gives solution to the roommates by asking the bill ammount of total rent and period , it calculates each of the person's usage and amount to pay
+objects:
+    Bill:
+        amount
+        period
+    Flatemate:
+        name
+        days_in_house
+    PdfReport:
+        file_name
+        generate(flatemate_1,flatemate_2,bill)
