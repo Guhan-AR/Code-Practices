@@ -294,13 +294,42 @@
 # s=Solution()
 # print(s.canJump([2,3,1,1,4]))
 
-person_1=[1,10,20,30,30,0,30,20,15,5]
-person_2=[2,20,20,10,30,0,0,0,15,5]
-amount=100
-def check_person(A,B,amount):
-    if A+B!=0:
-        return A/(A+B)*amount
-    else:
-        return amount/2
-for i in range(len(person_1)):
-    print("i=",i,"ans:",check_person(person_1[i],person_2[i],amount),"ans:",check_person(person_2[i],person_1[i],amount),"total:",check_person(person_1[i],person_2[i],amount)+check_person(person_2[i],person_1[i],amount))
+# person_1=[1,10,20,30,30,0,30,20,15,5]
+# person_2=[2,20,20,10,30,0,0,0,15,5]
+# amount=100
+# def check_person(A,B,amount):
+#     if A+B!=0:
+#         return A/(A+B)*amount
+#     else:
+#         return amount/2
+# for i in range(len(person_1)):
+#     print("i=",i,"ans:",check_person(person_1[i],person_2[i],amount),"ans:",check_person(person_2[i],person_1[i],amount),"total:",check_person(person_1[i],person_2[i],amount)+check_person(person_2[i],person_1[i],amount))
+
+def scores(string):
+    string=string.strip()
+    score=0
+    for i in range(len(string)):
+        if i+4 <= len(string) and string[i:i+4] == string[i:i+4][::-1]:
+            score+=5
+        if i+5 <= len(string) and string[i:i+5] == string[i:i+5][::-1]:
+            score+=10
+    return score
+# string = "    ABABAAAA "
+# print(scores(string))
+
+def vowel_convertion(string):
+    for i in string:
+        if i.lower() in ["a","e","i","o","u"]:
+            return str(i*len(string))
+    return string
+# string="BOB"
+# print(vowel_convertion(string))
+
+def change_alternate_element(array):
+    a=array
+    for i in range(len(array)//2):
+        if i%2!=0:
+            a[i],array[-(i+1)]=array[-(i+1)],a[i]
+    return a
+# a=[1,2,3,4,5,6,7]
+# print(change_alternate_element(a))
