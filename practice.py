@@ -281,15 +281,26 @@
 # a=10
 # for i in range(a//2-1,-1,-1):
 #     print(i)
-class Solution:
-    def canJump(self, nums: list[int]) -> bool:
-        index=len(nums)-1
-        for i in range(len(nums)-2,-1,-1):
-            print("for loop:",i)
-            print("index:",index,"i+nums[i]",i+nums[i])
-            if index == i + nums[i]:
-                print("varuthu ippo:",i)
-                index=i
-        return index == 0
-s=Solution()
-print(s.canJump([2,3,1,1,4]))
+# class Solution:
+#     def canJump(self, nums: list[int]) -> bool:
+#         index=len(nums)-1
+#         for i in range(len(nums)-2,-1,-1):
+#             print("for loop:",i)
+#             print("index:",index,"i+nums[i]",i+nums[i])
+#             if index == i + nums[i]:
+#                 print("varuthu ippo:",i)
+#                 index=i
+#         return index == 0
+# s=Solution()
+# print(s.canJump([2,3,1,1,4]))
+
+person_1=[1,10,20,30,30,0,30,20,15,5]
+person_2=[2,20,20,10,30,0,0,0,15,5]
+amount=100
+def check_person(A,B,amount):
+    if A+B!=0:
+        return A/(A+B)*amount
+    else:
+        return amount/2
+for i in range(len(person_1)):
+    print("i=",i,"ans:",check_person(person_1[i],person_2[i],amount),"ans:",check_person(person_2[i],person_1[i],amount),"total:",check_person(person_1[i],person_2[i],amount)+check_person(person_2[i],person_1[i],amount))
