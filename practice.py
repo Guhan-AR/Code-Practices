@@ -360,3 +360,28 @@ class Solution:
 # s=Solution()
 # print(s.jump([2,3,1,1,4]))
 
+# def binary_search(array,target,high,low):
+#     if low<=high:
+#         mid = low+(high-low)//2
+#         if array[mid]==target:
+#             return mid
+#         elif array[mid]>=target:
+#             return binary_search(array,target,mid-1,low)
+#         else:
+#             return binary_search(array,target,high,mid+1)
+#     return -1
+# array = [1, 3, 5, 7, 9, 11]
+# target = 7
+# result = binary_search(array, target, len(array) - 1, 0)
+# print(result)  # Output: 3 (index of the target 7)
+
+class Solution:
+    def hIndex(self, citations: list[int]) -> int:
+        index,maxi=0,0
+        for i in range(len(citations)):
+            if citations[i]>maxi:
+                maxi=citations[i]
+                index=i
+        return index
+# s=Solution()
+# print(s.hIndex([3,0,6,1,5]))
