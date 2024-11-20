@@ -305,58 +305,58 @@
 # for i in range(len(person_1)):
 #     print("i=",i,"ans:",check_person(person_1[i],person_2[i],amount),"ans:",check_person(person_2[i],person_1[i],amount),"total:",check_person(person_1[i],person_2[i],amount)+check_person(person_2[i],person_1[i],amount))
 
-def scores(string):
-    string=string.strip()
-    score=0
-    for i in range(len(string)):
-        if i+4 <= len(string) and string[i:i+4] == string[i:i+4][::-1]:
-            score+=5
-        if i+5 <= len(string) and string[i:i+5] == string[i:i+5][::-1]:
-            score+=10
-    return score
+# def scores(string):
+#     string=string.strip()
+#     score=0
+#     for i in range(len(string)):
+#         if i+4 <= len(string) and string[i:i+4] == string[i:i+4][::-1]:
+#             score+=5
+#         if i+5 <= len(string) and string[i:i+5] == string[i:i+5][::-1]:
+#             score+=10
+#     return score
 # string = "    ABABAAAA "
 # print(scores(string))
 
-def vowel_convertion(string):
-    for i in string:
-        if i.lower() in ["a","e","i","o","u"]:
-            return str(i*len(string))
-    return string
+# def vowel_convertion(string):
+#     for i in string:
+#         if i.lower() in ["a","e","i","o","u"]:
+#             return str(i*len(string))
+#     return string
 # string="BOB"
 # print(vowel_convertion(string))
 
-def change_alternate_element(array):
-    a=array
-    for i in range(len(array)//2):
-        if i%2!=0:
-            a[i],array[-(i+1)]=array[-(i+1)],a[i]
-    return a
+# def change_alternate_element(array):
+#     a=array
+#     for i in range(len(array)//2):
+#         if i%2!=0:
+#             a[i],array[-(i+1)]=array[-(i+1)],a[i]
+#     return a
 # a=[1,2,3,4,5,6,7]
 # print(change_alternate_element(a))
 
-def add_higher_index(array):
-    summer=0
-    maxi=0
-    for i in array:
-        for j in str(i):
-            maxi=max(maxi,int(j))
-        summer+=maxi
-        maxi=0
-    return summer
+# def add_higher_index(array):
+#     summer=0
+#     maxi=0
+#     for i in array:
+#         for j in str(i):
+#             maxi=max(maxi,int(j))
+#         summer+=maxi
+#         maxi=0
+#     return summer
 # a=[7,10,32]
 # print(add_higher_index(a))
 
-class Solution:
-    def jump(self, nums: list[int]) -> int:
-        near = far = jumps = 0
-        while far < len(nums) - 1:
-            farthest = 0
-            for i in range(near, far + 1):
-                farthest = max(farthest, i + nums[i])
-            near = far + 1
-            far = farthest
-            jumps += 1
-        return jumps
+# class Solution:
+#     def jump(self, nums: list[int]) -> int:
+#         near = far = jumps = 0
+#         while far < len(nums) - 1:
+#             farthest = 0
+#             for i in range(near, far + 1):
+#                 farthest = max(farthest, i + nums[i])
+#             near = far + 1
+#             far = farthest
+#             jumps += 1
+#         return jumps
 # s=Solution()
 # print(s.jump([2,3,1,1,4]))
 
@@ -375,13 +375,47 @@ class Solution:
 # result = binary_search(array, target, len(array) - 1, 0)
 # print(result)  # Output: 3 (index of the target 7)
 
-class Solution:
-    def hIndex(self, citations: list[int]) -> int:
-        index,maxi=0,0
-        for i in range(len(citations)):
-            if citations[i]>maxi:
-                maxi=citations[i]
-                index=i
-        return index
+# class Solution:
+#     def hIndex(self, citations: list[int]) -> int:
+#         index,maxi=0,0
+#         for i in range(len(citations)):
+#             if citations[i]>maxi:
+#                 maxi=citations[i]
+#                 index=i
+#         return index
 # s=Solution()
 # print(s.hIndex([3,0,6,1,5]))
+
+# class Solution:
+#     def hIndex(self, citations: list[int]) -> int:
+#         papers = len(citations)
+#         citation_buckets = [0] * (papers + 1)
+
+#         for citation in citations:
+#             print(citation,citation_buckets)
+#             citation_buckets[min(citation, papers)] += 1
+#         print(citation_buckets)
+
+#         cumulative_papers = 0
+#         for h_index in range(papers, -1, -1):
+#             cumulative_papers += citation_buckets[h_index]
+#             print("cumulative paper=",cumulative_papers)
+#             if cumulative_papers >= h_index:
+#                 return h_index
+# s=Solution()
+# print(s.hIndex([3,0,6,1,5]))
+
+class Solution:
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        lp=[1]*len(nums)
+        rp=[1]*len(nums)
+        for i in range(1,len(nums)):
+            lp[i]=lp[i-1]*nums[i-1]
+        for i in range(len(nums)-2,-1,-1):
+            rp[i]=rp[i+1]*nums[i+1]
+        result=[1]*len(nums)
+        for i in range(len(nums)):
+            result[i]=lp[i]*rp[i]
+        return result
+s=Solution()
+print(s.productExceptSelf([3,5,5]))

@@ -34,6 +34,7 @@ class Flatmate:
         else:
             return bill.amount/2
 
+
 class PdfReport:
     """
     This class contains the functionality to create a bill PDF for the flatmates.
@@ -44,7 +45,6 @@ class PdfReport:
     def generate(self, flatmate_1, flatmate_2, bill):
         # Placeholder for PDF generation logic.
         pass
-
 
 def tester_function():
     the_bill = Bill(amount=120, period=30)
