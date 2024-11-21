@@ -417,5 +417,18 @@ class Solution:
         for i in range(len(nums)):
             result[i]=lp[i]*rp[i]
         return result
-s=Solution()
-print(s.productExceptSelf([3,5,5]))
+# s=Solution()
+# print(s.productExceptSelf([3,5,5]))
+
+def zero_finder():
+    a=1
+    count=0
+    for i in range(1,101):
+        a*=i
+    a=str(a)
+    for i in a[::-1]:
+        if i!="0":
+            break
+        count+=1
+    print(count)
+zero_finder()
