@@ -405,30 +405,40 @@
 # s=Solution()
 # print(s.hIndex([3,0,6,1,5]))
 
-class Solution:
-    def productExceptSelf(self, nums: list[int]) -> list[int]:
-        lp=[1]*len(nums)
-        rp=[1]*len(nums)
-        for i in range(1,len(nums)):
-            lp[i]=lp[i-1]*nums[i-1]
-        for i in range(len(nums)-2,-1,-1):
-            rp[i]=rp[i+1]*nums[i+1]
-        result=[1]*len(nums)
-        for i in range(len(nums)):
-            result[i]=lp[i]*rp[i]
-        return result
+# class Solution:
+#     def productExceptSelf(self, nums: list[int]) -> list[int]:
+#         lp=[1]*len(nums)
+#         rp=[1]*len(nums)
+#         for i in range(1,len(nums)):
+#             lp[i]=lp[i-1]*nums[i-1]
+#         for i in range(len(nums)-2,-1,-1):
+#             rp[i]=rp[i+1]*nums[i+1]
+#         result=[1]*len(nums)
+#         for i in range(len(nums)):
+#             result[i]=lp[i]*rp[i]
+#         return result
 # s=Solution()
 # print(s.productExceptSelf([3,5,5]))
 
-def zero_finder():
-    a=1
-    count=0
-    for i in range(1,101):
-        a*=i
-    a=str(a)
-    for i in a[::-1]:
-        if i!="0":
-            break
-        count+=1
-    print(count)
-zero_finder()
+# def zero_finder():
+#     a=1
+#     count=0
+#     for i in range(1,101):
+#         a*=i
+#     a=str(a)
+#     for i in a[::-1]:
+#         if i!="0":
+#             break
+#         count+=1
+#     print(count)
+
+# zero_finder()
+
+# class muni_hari_krishnan():
+#     def __init__(self):
+#         self.Name="muni_hari_krishnan"
+#         self.fan_of="TVK"
+#     def details(self):
+#         return self.Name
+# M=muni_hari_krishnan()
+# print(M.details())
