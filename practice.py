@@ -442,3 +442,13 @@
 #         return self.Name
 # M=muni_hari_krishnan()
 # print(M.details())
+
+# arr=[0,1,2,3,4,5]
+# n=len(arr)
+# sum=0
+# for i in range(n):
+#     print("hi")
+#     if arr[i]%2!=0 and ((arr[i]**2)**1/2==arr[i]):
+#         print("hi hlo")
+#         sum+=(arr[i]**2)
+#     print(sum)

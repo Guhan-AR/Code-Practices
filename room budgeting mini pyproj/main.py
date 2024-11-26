@@ -56,4 +56,15 @@ def tester_function():
     print(f"Person 1 pays: {b:.2f}")
     print(f"Total: {a + b:.2f}")
 
-tester_function()
+def input_function():
+    the_bill = Bill(amount=int(input("Enter the amount:")), period=int(input("Enter the whole time period of Rental:")))
+    person_1 = Flatmate(name=str(input("Name of person one:")), days_in_house=int(input("Number of Days in house by person One:")))
+    person_2 = Flatmate(name=str(input("Name of person one:")), days_in_house=int(input("Number of Days in house by person One:")))
+    a = person_2.pays(bill=the_bill, another_person=person_1)
+    b = person_1.pays(bill=the_bill, another_person=person_2)
+    print(f"Person 2 pays: {a:.2f}")
+    print(f"Person 1 pays: {b:.2f}")
+    print(f"Total: {a + b:.2f}")
+
+# tester_function()
+input_function()
