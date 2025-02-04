@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A complete HTML reference page">
+    <title>Complete HTML Guide</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+    <script src="script.js" defer></script> <!-- External JavaScript -->
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to the Complete HTML Guide</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#form">Form</a></li>
+                <li><a href="#table">Table</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#footer">Footer</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Section: About -->
+    <section id="about">
+        <h2>About HTML</h2>
+        <p>HTML (HyperText Markup Language) is the standard language for creating web pages.</p>
+        <aside>Fun Fact: HTML was invented by Tim Berners-Lee in 1991.</aside>
+    </section>
+
+    <!-- Section: Forms -->
+    <section id="form">
+        <h2>HTML Form Example</h2>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            
+            <label>
+                <input type="checkbox" name="subscribe"> Subscribe to newsletter
+            </label>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    
+    <!-- Section: Table -->
+    <section id="table">
+        <h2>Sample Table</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Alice</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bob</td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- Section: Media Elements -->
+    <section id="media">
+        <h2>Media Elements</h2>
+        <h3>Image</h3>
+        <img src="example.jpg" alt="Sample Image" width="200">
+        
+        <h3>Video</h3>
+        <video controls width="300">
+            <source src="sample.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <h3>Audio</h3>
+        <audio controls>
+            <source src="sample.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer id="footer">
+        <p>&copy; 2025 Complete HTML Guide. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

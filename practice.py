@@ -452,3 +452,78 @@
 #         print("hi hlo")
 #         sum+=(arr[i]**2)
 #     print(sum)
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        dummy = ListNode()
+        res = dummy
+
+        total = carry = 0
+
+        while l1 or l2 or carry:
+            total = carry
+
+            if l1:
+                total += l1.val
+                l1 = l1.next
+            if l2:
+                total += l2.val
+                l2 = l2.next
+            
+            num = total % 10
+            carry = total // 10
+            dummy.next = ListNode(num)
+            dummy = dummy.next
+        
+        return res.next
+
+# Helper function to create a linked list from a list
+def create_linked_list(nums):
+    dummy = ListNode()
+    current = dummy
+    for num in nums:
+        current.next = ListNode(num)
+        current = current.next
+    return dummy.next
+
+# Helper function to convert a linked list to a list
+def linked_list_to_list(node):
+    result = []
+    while node:
+        result.append(node.val)
+        node = node.next
+    return result
+
+# Test the function
+# if __name__ == "__main__":
+#     # Create linked lists from input numbers
+#     l1 = create_linked_list([2, 4, 3])  # Represents 342
+#     l2 = create_linked_list([5, 6, 4])  # Represents 465
+
+#     # Instantiate the Solution class
+#     solution = Solution()
+
+#     # Call the function
+#     result = solution.addTwoNumbers(l1, l2)
+
+    # Convert the result linked list back to a list and print it
+    # print("Result:", linked_list_to_list(result))  # Expected Output: [7, 0, 8]
+
+# class Solution:
+#     def maxArea(self, height: list[int]) -> int:
+#         max_val,left,right=0,0,len(height)-1
+#         while left<right:
+#             max_val=max(max_val , (right-left) * min(height[left],height[right]))
+#             if height[left] < height[right]:
+#                 left+=1
+#             else:
+#                 right-=1
+#         return max_val
+# sol=Solution()
+# print(sol.maxArea([1,8,6,2,5,4,8,3,7]))
