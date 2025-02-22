@@ -527,3 +527,48 @@ def linked_list_to_list(node):
 #         return max_val
 # sol=Solution()
 # print(sol.maxArea([1,8,6,2,5,4,8,3,7]))
+
+
+# def a(n):
+#     i = 0
+#     while i<n:
+#         yield i
+#         i+=1
+
+# for i in a(10):
+#     print(i)
+
+# my_list = [x * 2 for x in range(100)]
+# my_generator = (x * 2 for x in range(100))
+# # print(my_generator)
+
+# def fibonacci_generator():
+#     a, b = 0, 1
+#     while True:  # Generate indefinitely
+#         yield a
+#         a, b = b, a + b
+
+# # Example usage (print the first 10 Fibonacci numbers)
+# fib_gen = fibonacci_generator()
+# for _ in range(10):
+#     print(next(fib_gen))
+
+def filter_data(data):
+    for item in data:
+        if item > 10:
+            yield item
+            # return [item]
+
+def square_data(data):
+    for item in data:
+        # yield item * item
+        return item
+
+# Example usage
+data = [5, 12, 8, 15, 3, 20]
+filtered_data = filter_data(data)
+# squared_data = square_data(filtered_data)
+# print(filtered_data)
+# for value in filtered_data:
+#     print(value)
+print(list(filtered_data))
