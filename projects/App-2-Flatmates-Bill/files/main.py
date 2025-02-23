@@ -1,3 +1,4 @@
+from files.Flatmate import Flatmate
 from files.pdfgenerator import PdfReport
 
 
@@ -11,25 +12,25 @@ class Bill:
         self.period = period
 
 
-class Flatmate:
-    """
-    This object stores the things like name , number of days they stayed and payment of each flatmate.
-    """
+def testing():
+    total = Bill(1000,30)
+    Guhan = Flatmate("Guhan", 1)
+    AR = Flatmate("AR", 20)
+    total_bill = Guhan.bill(Guhan,AR,total)
+    print(round(total_bill[0]),round(total_bill[1]))
+    print(total_bill[0]+total_bill[1]," ",total.amount)
+    pdf = PdfReport("Feb")
+    pdf.generate(Guhan.name,AR.name,total_bill[0],total_bill[1])
 
-    def __init__(self, name, days_in_house):
-        self.name = name
-        self.days_in_house = days_in_house
+def main():
+    pdf = PdfReport(input("Month you stayed[File name]:"))
+    total = Bill(int(input("Enter the total amount of Bill:")), int(input("Total period of stay:")))
+    person1 = Flatmate(input("Enter your Name:"), int(input("Number of days stayed:")))
+    person2 = Flatmate(input("Enter flatemate name:"), int(input("Number of days he/she stayed:")))
+    bill_1,bill_2 = person1.bill(person1, person2, total)
+    print(bill_1, bill_2)
+    print(bill_1+bill_2, " ", total.amount)
+    pdf.generate(person1.name, person2.name, bill_1, bill_2)
 
-    def bill(self,flatmate1,flatemate2,bill):
-        p1,p2 = (flatmate1.days_in_house/(flatmate1.days_in_house + flatemate2.days_in_house)) * bill.amount , (flatemate2.days_in_house/(flatmate1.days_in_house + flatemate2.days_in_house)) * bill.amount
-        # print("inside bill method:",p1,p2)
-        return [p1,p2]
-
-total = Bill(1000,30)
-Guhan = Flatmate("Guhan",20)
-AR = Flatmate("AR",20)
-total_bill = Guhan.bill(Guhan,AR,total)
-print(round(total_bill[0]),round(total_bill[1]))
-print(total_bill[0]+total_bill[1]," ",total.amount)
-pdf = PdfReport("Feb")
-pdf.generate(Guhan.name,AR.name,total_bill[0],total_bill[1])
+# main()
+testing()
