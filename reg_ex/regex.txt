@@ -1,0 +1,29 @@
+meta_characters = . ^ $ * + ? { } [ ] \ | ( )
+
+
+methods for finding patterns
+match(),finditer(),findall(),search()
+split(),sub()
+
+match() - only for checking from the very first of the original string that have any of matches.
+finditer() - returns object have data of the iterations values of patterns.
+findall() -
+search() - only returns the first match of pattern
+
+for viewing result
+span(),start(),end(),group()
+
+special characters:
+\d = matches any decimal digits
+\D = matches any non decimals
+\s = matches any whitespace characters
+\S = matches any non whitespace
+\w = matches any alphanumerics [0-9,a-z,A-Z,_]
+\W = matches any non alphanumerics
+\b = matches any pattern that begins at starting of block of word
+\B = matches any pattern that ends at starting of block of word
+
+sets:
+set is to find patterns ,
+we can use that by using [],
+we can use - to set range [0-9] match and return all the numbers

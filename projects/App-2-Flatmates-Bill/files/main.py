@@ -32,5 +32,5 @@ def main():
     print(bill_1+bill_2, " ", total.amount)
     pdf.generate(person1.name, person2.name, bill_1, bill_2)
 
-# main()
+# main()  
 testing()

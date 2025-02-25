@@ -553,22 +553,57 @@ def linked_list_to_list(node):
 # for _ in range(10):
 #     print(next(fib_gen))
 
-def filter_data(data):
-    for item in data:
-        if item > 10:
-            yield item
-            # return [item]
+# def filter_data(data):
+#     for item in data:
+#         if item > 10:
+#             yield item
+#             # return [item]
 
-def square_data(data):
-    for item in data:
-        # yield item * item
-        return item
+# def square_data(data):
+#     for item in data:
+#         # yield item * item
+#         return item
 
-# Example usage
-data = [5, 12, 8, 15, 3, 20]
-filtered_data = filter_data(data)
-# squared_data = square_data(filtered_data)
-# print(filtered_data)
-# for value in filtered_data:
-#     print(value)
-print(list(filtered_data))
+# # Example usage
+# data = [5, 12, 8, 15, 3, 20]
+# filtered_data = filter_data(data)
+# # squared_data = square_data(filtered_data)
+# # print(filtered_data)
+# # for value in filtered_data:
+# #     print(value)
+# print(list(filtered_data))
+
+# def nth_duplicate(arr,n):
+#     seen=set()
+#     duplicate = []
+#     for num in arr:
+#         if num in seen and num not in duplicate:
+#             duplicate.append(num)
+#         seen.add(num)
+#         if len(duplicate)==n:
+#             return duplicate[-1]
+#     return None
+# a=[1,2,5,4,5,6,7,5,4]
+# print(nth_duplicate(a,2))
+# print(5//2)
+
+# def gcd(a,b):
+#     while b:
+#         a,b = b,a%b
+#     return a
+
+# print(gcd(10,30))
+
+# print([range(10)])
+
+# for i in range(1,20,2):
+#     print(i)
+
+import re
+
+a="123abc123abccdAbc"
+b=re.compile(r"abc")
+c=b.finditer(a)
+
+for i in c:
+    print(i)
