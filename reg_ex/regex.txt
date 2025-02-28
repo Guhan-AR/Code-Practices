@@ -26,4 +26,23 @@ special characters:
 sets:
 set is to find patterns ,
 we can use that by using [],
-we can use - to set range [0-9] match and return all the numbers
+we can use - to set range [0-9] match and return all the numbers ex:[0-1a-zA-Z_-]selects all alphanumerics with - and _
+
+quantifiers:
+*:0 or more
++:1 or more
+?:0 or 1
+{4}: exact numbers
+{4,7}:exact number with range{min , max}
+
+group methods to call different groups of searching
+
+split method and sub method is used to make modifications
+
+Compilation Flags:
+ASCII
+DOTALL
+IGNORECASE
+LOCALE
+MULTILINE
+VERBOSE
