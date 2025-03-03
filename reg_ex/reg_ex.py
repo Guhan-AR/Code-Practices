@@ -12,3 +12,6 @@ match_finder = pattern_obj.sub(' hi ',string)
 # for matching in match_finder:
 #     print(matching)
 print(match_finder)
+
+# hi
+print("hello")
