@@ -13,5 +13,4 @@ match_finder = pattern_obj.sub(' hi ',string)
 #     print(matching)
 print(match_finder)
 
-# hi
-print("hello")
+print("git started")
