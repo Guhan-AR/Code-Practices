@@ -1,0 +1,106 @@
+/* Reset Default Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    background: #333;
+    padding: 10px;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.site-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav {
+    background-color: #444;
+    padding: 10px 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 15px;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+li a:hover {
+    color: #f4a261;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://source.unsplash.com/800x400/?nature,water') no-repeat center center/cover;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Content */
+.content h1, .content h2 {
+    text-align: left;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
