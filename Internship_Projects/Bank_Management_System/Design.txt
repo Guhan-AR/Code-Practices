@@ -1,0 +1,44 @@
+Bank class:"""contains all the operations done in bank"""
+    (crud)
+    create class: """contains loan account and loan creation methods"""
+
+        open_account method:
+        open_loan method:
+        dummy_generator method:
+
+    read class:"""contains visualizing methods"""
+
+        account_based_read method:
+        loan_based_read method:
+
+    update class:"""contains credit and debit methods"""
+
+        credit method:
+        debit method:
+        transaction_history_saver method:
+
+    delete class:"""closing account and load will happen here"""
+
+        close account method:
+        close loan method:
+
+customer class:
+
+    customer_name,customer_id,customer_phone_number,customer_address,customer_pan_card_number
+
+loan class:
+
+    loan_id,loan_amount,loan_type
+
+account class:
+
+    account_id,amount_in_account,account_type
+
+csv saving class:
+
+    reads and saves[bank:[bank_name,branch_id,name_of_branch],customer:[customer_name,customer_id,customer_phone_number,customer_address,customer_pan_card_number],loan:[loan_id,loan_amount,loan_type],account:[account_id,amount_in_account,account_type]]
+    accounts_of_customers method:
+main class:
+
+    bank employee interaction method:
+    customer interaction method:

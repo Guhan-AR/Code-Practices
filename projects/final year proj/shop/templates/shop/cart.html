@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block content %}
+<p>Your Cart</p>
+<a href="{% url 'product_list' %}" class="back-to-products">← Back to Products</a>
+{% if cart_items %}
+    <div class="cart-items">
+        {% for item in cart_items %}
+        <div class="cart-item">
+            <div class="item-image">
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            </div>
+            <div class="item-details">
+                <h3>{{ item.product.name }}</h3>
+                <p class="item-price">Price: ${{ item.product.price }}</p>
+                <div class="quantity-controls">
+                    <form action="{% url 'reduce_quantity' item.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="quantity-btn">−</button>
+                    </form>
+                    <span class="quantity">{{ item.quantity }}</span>
+                    <form action="{% url 'increase_quantity' item.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="quantity-btn">+</button>
+                    </form>
+                </div>
+                <p class="item-total">Total: ${{ item.product.price|mul:item.quantity }}</p>
+                <form action="{% url 'remove_from_cart' item.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="remove-btn">Remove</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="cart-summary">
+        <h3>Total Price: ${{ total_price }}</h3>
+    </div>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}

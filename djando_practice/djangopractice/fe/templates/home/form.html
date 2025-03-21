@@ -1,0 +1,46 @@
+<form action="../about.html" method="get">
+    {% csrf_token %}
+    <label for="first_name">Form</label>
+    <fieldset>
+        <legend>First Name</legend>
+        <input type="text" name="first_name" placeholder="First Name">
+        
+    </fieldset>
+    <fieldset>
+    <legend>Last Name</legend>
+        <input type="text" name="last_name" placeholder="Last Name"></fieldset>
+    <input type="submit" value="Submit">
+</form>
+<form action="../about.html" method="get">
+    <label for="select">select language:</label>
+    <select name="language" id="language">
+        <option value=""> </option>
+        <option value="python">python</option>
+        <option value="html">html</option>
+        <option value="css">css</option>
+        <option value="javascript">javascript</option>
+    </select>
+    <br>
+    <label for="message">Type here About the language</label>
+    <textarea name="message" cols="30" rows="30">My programming language</textarea>
+<br>
+<label for="browser">select a browser if you selected js</label>
+    <input list="browsers" name="browser">
+  <datalist id="browsers">
+    <option value="Edge">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+  </datalist>
+  <br>
+  <label for="learning">learning date:</label>
+  <input type="date" name="date" id="date" min="1999-01-01" max="2030-12-31">
+  <br>
+  <label for="email">Enter your email:</label>
+  <input type="email" id="email" name="email">
+  <br>
+  <label for="month">Month</label>
+  <input type="month" id="bdaymonth" name="bdaymonth"><br>
+  
+</form>

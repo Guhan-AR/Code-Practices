@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+
+<aside>
+    <h1>Aside elements</h1>
+    <ul>
+        <li>
+            <a href="#essential">starting</a>
+        </li>
+        <li>
+            <a href="#pre_tag">pre tag</a>
+        </li>
+        <li>
+            <a href="#Formatting">Formatting</a>
+        </li>
+        <li>
+            <a href="#Anchor">Anchor tags</a>
+        </li>
+        <li>
+            <a href="#iframeclass"><del>iframe class</del></a>
+        </li>
+    </ul>
+</aside>
+
+<div class="essential">
+    <p title="Learning">This is 17th , the 7th day of internship and im just started learning html,css and django for my
+        fullstack learning.</p><br>
+    <img src="https://images.pexels.com/photos/31151451/pexels-photo-31151451/free-photo-of-scenic-winding-road-through-lush-green-hills.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="online image." height="500" width="500">
+    <hr>
+</div>
+<div id="pre_tag">
+    <h1>
+        < pre> Tag practice:
+    </h1>
+    <pre>
+    This is the practice of preformatted text on Html.
+
+    This will look bit smaller then normal text.
+</pre>
+    <hr>
+</div>
+<div id="Formatting">
+    <h1>Formatting Practice</h1>
+    <br>
+    <p><b>This is bold text.</b></p>
+    <p><strong>This is strong text.</strong></p>
+    <p><i>This is italic text.</i></p>
+    <p><em>This is emphasized text.</em></p>
+    <p>This is <mark>marked text.</mark></p>
+    <p><small>This is small text.</small></p>
+    <p>This is <del>deleted text.</del></p>
+    <p>This is <ins>inserted text.</ins></p>
+    <p><sub>This is subscripted text.</sub></p>
+    <p><sup>This is superscripted text.</sup></p>
+    <hr><br>
+</div>
+<div>
+    <h1>quotation and citiatin practice:</h1>
+    <blockquote>
+        This is the blockquote text.
+    </blockquote>
+    <p>for quotation use q to make: <q>The sentence like This.</q></p>
+    <hr>
+    <br>
+</div>
+<div id="Anchor">
+    <h1>Anchor tags</h1>
+    <a href="About">Click here to see about.html</a>
+    <hr>
+    <br>
+</div>
+{% load static %}
+{% include "home/table.html" %}
+<div id="iframeclass">
+    <h1>iframe web</h1>
+    <iframe src="{% static 'home_iframe.html' %}" height="500" width="500"></iframe>
+    <br>
+    <a style="color: blue;" href="About" name="a">Click</a>
+    <!-- <p style="color: red;"><strong>Click here</strong></p> -->
+    <hr>
+</div>
+
+{% include "home/form.html" %}
+
+{% include "home/media.html" %}
+
+{% endblock %}

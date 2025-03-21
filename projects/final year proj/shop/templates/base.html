@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Platform</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="images">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Ecommerce Platform</h1>
+            <div class="header-links">
+                {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; color: white; cursor: pointer;">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Signup</a>
+                {% endif %}
+                <a href="{% url 'cart' %}">Cart ({% if user.is_authenticated %}{{ user.cart_set.count }}{% else %}0{% endif %})</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
