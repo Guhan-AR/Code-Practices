@@ -1,0 +1,27 @@
+{% load static %}
+<div class="book">
+    <table>
+        <thead>
+            <tr>
+                <td>Book Name</td>
+                <td>Author Name</td>
+                <td>About</td>
+                <td>Price</td>
+                <td>Image</td>
+                <td>Availability</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Book in all_books %}
+            <tr>
+                <td>{{Book.book_title}}</td>
+                <td>{{Book.book_author}}</td>
+                <td>{{Book.about_book}}</td>
+                <td>{{Book.book_price}}</td>
+                <td><img src="{{Book.book_image.url}}" alt="{{Book.book_title}}" width="200" height="200"></td>
+                <td>{{Book.availability}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

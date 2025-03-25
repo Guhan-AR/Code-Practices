@@ -1,0 +1,72 @@
+h1{
+    color: white;
+    background-color: black;
+    font-size: 35px;
+}
+
+p{
+    color: powderblue;
+    background-color: red;
+    text-align: justify;
+    text-indent: 50px;
+    line-height: 1.2;
+    text-shadow: 2px 3px 2px black;
+}
+p.para{
+    color: rgb(153, 118, 118);
+    background-color: black;
+}
+*{
+    background-color: grey;
+    margin-left: 10px;
+    /* background-image: url("1.jpg"); */
+    background-repeat: 2px;
+    /* background-position: left bottom;
+    background-attachment: scroll; */
+}
+.hi{
+    padding: 20px;
+    height: 50px;
+    width: 200px;
+    background-color: blue;
+    text-align: justify;
+    border: 3px dotted rgb(214, 180, 180);
+    outline: 2px solid rgb(190, 18, 18);
+}
+p.hi{
+    opacity: 0.5;
+}
+
+.two{
+    height: 200px;
+    width : 30%;
+    background-color: black;
+}
+
+button{
+    margin-top: 20px;
+    padding: 20px;
+    height: 20px;
+    width: 50%;
+    text-align: center;
+    background-color: violet;
+    box-shadow: 2px 3px 2px black;
+}
+button:hover{
+    background-color: red;
+    box-shadow: none;
+}
+table{
+    padding: 10px;
+    border: 2px solid black;
+    margin-top: 8px;
+    text-align: left;
+    outline: 1px dashed black;
+}
+td{
+    padding: 10px;
+    border: 2px solid black;
+}
+th{
+    border:2px solid black;
+}
