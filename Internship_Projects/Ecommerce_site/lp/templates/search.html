@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Search</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    {% load static %}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'main.css' %}">
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="searched" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    {% if j %}
+    {% for a in j %}
+    {{ a.name }}
+    {{ a.price }}
+    <img src="{{a.image.url}}" alt="{{a.name}}" style="height: 500px;">
+    <br>
+    {% endfor %}
+    {% else %}
+    <p>No result found</p>
+    {% endif %}
+</body>
+</html>

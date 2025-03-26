@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ecommerce Site</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    {% load static %}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'lp/main.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome</h1>
+    </header>
+    <h2><strong>Products list</strong></h2>
+    <div>
+    <div id="items">
+        {% if add_product %}
+        {% for i in add_product %}
+        
+                <img src="{{i.image.url}}" alt="{{i.name}}">
+                <p>{{i.name}}</p>
+                <p>${{i.price}}</p>
+        {% endfor %}
+        {% else %}
+        <p>Products not available...</p>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
