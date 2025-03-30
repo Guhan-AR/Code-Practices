@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 
@@ -19,3 +19,13 @@ def add_book(request):
             print("Yes this is a valid field to save in database.")
             book_form.save()
     return render(request, 'adding_books.html', context)
+
+def delete_book(request,id):
+    print('*'*20)
+    print(id)
+    print('*'*20)
+    selected_book = Book.objects.get(id=id)
+    print(selected_book)
+    print('#'*20)
+    selected_book.delete()
+    return redirect('/')

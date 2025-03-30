@@ -9,6 +9,8 @@
                 <td>Price</td>
                 <td>Image</td>
                 <td>Availability</td>
+                <td>Update</td>
+                <td>Delete</td>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +22,9 @@
                 <td>{{Book.book_price}}</td>
                 <td><img src="{{Book.book_image.url}}" alt="{{Book.book_title}}" width="200" height="200"></td>
                 <td>{{Book.availability}}</td>
+                <td><button type="submit">Update</button></td>
+                <td>
+                    <a href="{% url 'deletes_book' Book.id %}"><button type="submit">Delete</button></a></td>
             </tr>
             {% endfor %}
         </tbody>

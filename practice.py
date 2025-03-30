@@ -601,9 +601,15 @@ def linked_list_to_list(node):
 
 import re
 
-a="123abc123abccdAbc"
-b=re.compile(r"abc")
-c=b.finditer(a)
+# a="123abc123abccdAbc"
+# b=re.compile(r"abc")
+# c=b.finditer(a)
 
-for i in c:
-    print(i)
+# for i in c:
+#    print(i)
+
+i = 50
+
+for i in range(1,i+1):
+    if i%2 == 0:
+        print(i)
