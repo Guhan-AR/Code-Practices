@@ -4,10 +4,7 @@ from .forms import *
 from django.db.models import Q
 
 def landing_page(request):
-    context = {
-        'add_product' : Product_db.objects.all()
-    }
-    return render(request,'landing_page.html',context)
+    return render(request,'landing_page.html',{'add_product' : Product_db.objects.all()})
 
 def admini(request):
 
@@ -16,9 +13,7 @@ def admini(request):
     }
     if request.method == 'POST':
         add_product = adding_product(request.POST,request.FILES)
-        print('before if')
         if add_product.is_valid():
-            print('*'*30)
             add_product.save()
         else:
             print(add_product)

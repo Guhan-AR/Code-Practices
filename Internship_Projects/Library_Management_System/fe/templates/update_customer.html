@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>update</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    {% load static %}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <h2>Adding Customer Form</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Name:{{a.name}}</p>
+        <p>Phone Number:{{a.phone_no}}</p>
+        <p>Mail:{{a.mail}}</p>
+        <button type="submit">Add Customer</button>
+    </form>
+</body>
+</html>

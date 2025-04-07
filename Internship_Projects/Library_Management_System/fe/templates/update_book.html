@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Update</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'main.css' %}">
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <h2>Updation</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Book title: {{ book_form.book_title }}</p>
+        <p>Book author: {{ book_form.book_author }}</p>
+        <p>About book: {{ book_form.about_book }}</p>
+        <p>Book price: {{ book_form.book_price }}</p>
+        <p>Book image: {{ book_form.book_image }}</p>
+        <p>Availability: {{ book_form.availability }}</p>
+        <button type="submit">Add Book</button>
+    </form>
+</body>
+</html>

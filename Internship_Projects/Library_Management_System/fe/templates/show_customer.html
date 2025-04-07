@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    {% load static %}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'style.css' %}">
+</head>
+<body>
+    <table>
+    <thead>
+        <tr>
+            <td>
+                Customer name
+            </td>
+            <td>
+                Phone number
+            </td>
+            <td>
+                mail id
+            </td>
+            <td>
+                Delete
+            </td>
+            <td>
+                Update
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>
+                {{customer.name}}
+            </td>
+            <td>
+                {{customer.phone_no}}
+            </td>
+            <td>
+                {{customer.mail}}
+            </td>
+            <td>
+                <a href="{% url 'delete_customer' customer.id %}">
+                    <button type="submit">
+                        Delete
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'update_customer' customer.id %}">
+                    <button type="submit">
+                        Update
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

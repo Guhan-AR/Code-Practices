@@ -3,16 +3,20 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Index Page</title>
+    <title>Index Page uh</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     {% load static %}
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'style.css' %}">
 </head>
 <body>
     <h1>Library Management System</h1>
-    {% include 'book/books.html' %}
-    <div>
-        
-    </div>
+    <h2>Adding Customer Form</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Name:{{add_customers.name}}</p>
+        <p>Phone Number:{{add_customers.phone_no}}</p>
+        <p>Mail:{{add_customers.mail}}</p>
+        <button type="submit">Add Customer</button>
+    </form>
 </body>
 </html>
