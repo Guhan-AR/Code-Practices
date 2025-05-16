@@ -3,11 +3,13 @@
 {% block content %}
 
     <center>
+
+        {% if user.is_authenticated %}
         <h1>Add Venue</h1>
         {% if submitted %}
         Venue successfully added..
         {% else %}
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
            
             {% csrf_token %}
 
@@ -15,5 +17,11 @@
             <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
         {% endif %}
+ {% else %}
+ You need to login for accessing this page
+ <button type="submit" ><a href="{% url 'log-in' %}">Click Here to Login</a></button>
+ {% endif %}
+ 
+        
     </center>
 {% endblock %}

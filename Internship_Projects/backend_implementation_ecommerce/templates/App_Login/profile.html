@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Profile</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h3>{{ profile }}</h3>
+    <p>Username:{{ profile.username }}</p>
+    <p>Full Name:{{ profile.full_name }}</p>
+    <p>Address:{{ profile.address_1 }}</p>
+    <p>City:{{ profile.city }}</p>
+    <p>Zip code:{{ profile.zipcode }}</p>
+    <p>Country:{{ profile.country }}</p>
+    <p>Phone:{{ profile.phone }}</p>
+    <button type="submit">
+        <a href="{% url 'App_Login:profile-edit' %}">Edit Profile</a>
+    </button>
+    <br>
+    <button type="submit"><a href="{% url 'App_Login:logout' %}">Logout</a></button>
+</body>
+</html>

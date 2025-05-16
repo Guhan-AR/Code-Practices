@@ -1,0 +1,19 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+
+    <center>
+        {% if user.is_authenticated %}
+        <h1>Update Event</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary">Update</button>
+        </form>
+ {% else %}
+ You need to login for accessing this page
+ <button type="submit" ><a href="{% url 'log-in' %}">Click Here to Login</a></button>
+ {% endif %}
+ 
+    </center>
+{% endblock %}

@@ -11,7 +11,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'list-events' %}">Events</a>
         </li>
-
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'add-venue' %}">Add Venue</a>
         </li>
@@ -20,12 +20,35 @@
           <a class="nav-link" href="{% url 'list-venue' %}">List Venue</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add-event' %}">Add Event</a>
+        </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'log-out' %}">Logout</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register-user' %}">Register</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'log-in' %}">Login</a>
+        </li>
+        {% endif %}
+
+        
+
       </ul>
+      {% if user.is_authenticated %}
       <form class="d-flex" role="search" method="POST" action="{% url 'venue-search' %}">
         {% csrf_token %}
         <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
         <button class="btn btn-outline-secondary" type="submit">Search</button>
       </form>
+      {% endif %}
     </div>
   </div>
 </nav>

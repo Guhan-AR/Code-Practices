@@ -14,6 +14,20 @@
 <body>
     {% include 'events/navbar.html' %}
     <div class="container">
+        {% if messages %}
+
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <p>{{message}}</p>
+                    <button type="button" class="btnclose" data-bs-dismiss = "alert" aria-label="Close">x</button>
+                </div>
+
+            
+
+
+            {% endfor %}
+
+        {% endif %}
         {% block content %}
 
         {% endblock %}
