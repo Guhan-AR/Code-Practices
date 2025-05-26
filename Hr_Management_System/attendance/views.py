@@ -8,14 +8,12 @@ from admin_panel.models import Employee  # Make sure this import is correct
 def attendance_view(request):
     user = request.user
 
-    # ✅ Step 1: Check if the logged-in user is an employee
     employee = Employee.objects.filter(user=user).first()
     if not employee:
         # You can also render a custom template instead of redirect
         messages.error(request, "Only employees can access the attendance system.")
         return redirect('dashboard')  # Or any fallback page
 
-    # ✅ Step 2: Continue only if user is employee
     current_session = AttendanceSession.objects.filter(user=user, check_out__isnull=True).first()
     sessions = AttendanceSession.objects.filter(user=user).order_by('-check_in')
 
