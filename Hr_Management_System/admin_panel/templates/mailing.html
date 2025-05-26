@@ -1,0 +1,9 @@
+<h1>Mail Sent Status:</h1>
+{% if status == 'success' %}
+    <p>Email has been sent successfully.</p>
+{% else %}
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Send Email</button>
+    </form>
+{% endif %}

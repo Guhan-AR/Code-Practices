@@ -1,0 +1,120 @@
+{% extends 'admin_panel/admin_base.html' %}
+{% block content %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2f3542;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #f1f2f6;
+            font-weight: 600;
+            color: #444;
+        }
+
+        tr:hover {
+            background-color: #f9fafc;
+        }
+
+        .action-link {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .action-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-action {
+            padding: 6px 12px;
+            margin-right: 6px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-accept {
+            background-color: #2ecc71;
+        }
+
+        .btn-reject {
+            background-color: #e74c3c;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 30px 0;
+            font-style: italic;
+            color: #999;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Leave Requests</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for leave in leaves %}
+                    <tr>
+                        <td>{{ leave.employee.user }}</td>
+                        <td>{{ leave.start_date }}</td>
+                        <td>{{ leave.end_date }}</td>
+                        <td>{{ leave.reason }}</td>
+                        <td>{{ leave.status }}</td>
+                        <td>
+                            <a href="{% url 'leave_detail' leave.pk %}" class="action-link">View</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="no-data">No leave requests found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

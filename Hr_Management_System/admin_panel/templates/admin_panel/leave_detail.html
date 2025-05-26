@@ -1,0 +1,131 @@
+{% extends 'admin_panel/admin_base.html' %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 60px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 30px;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    .detail-item {
+        margin-bottom: 20px;
+    }
+
+    .detail-item strong {
+        display: inline-block;
+        width: 170px;
+        color: #555;
+    }
+
+    .btn-group {
+        margin-top: 30px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn-approve {
+        background-color: #2ecc71;
+    }
+
+    .btn-approve:hover {
+        background-color: #27ae60;
+    }
+
+    .btn-reject {
+        background-color: #e74c3c;
+    }
+
+    .btn-reject:hover {
+        background-color: #c0392b;
+    }
+
+    .btn-back {
+        background-color: #7f8c8d;
+    }
+
+    .btn-back:hover {
+        background-color: #636e72;
+    }
+
+    form {
+        display: inline;
+    }
+</style>
+
+<div class="container">
+    <h1>Leave Request Details</h1>
+
+    <div class="detail-item">
+        <strong>Employee:</strong> {{ leave.employee }}
+    </div>
+    <div class="detail-item">
+        <strong>Leave Type:</strong> {{ leave.get_leave_type_display }}
+    </div>
+    <div class="detail-item">
+        <strong>Start Date:</strong> {{ leave.start_date }}
+    </div>
+    <div class="detail-item">
+        <strong>End Date:</strong> {{ leave.end_date }}
+    </div>
+    <div class="detail-item">
+        <strong>Days Requested:</strong> {{ leave.days_requested }}
+    </div>
+    <div class="detail-item">
+        <strong>Reason:</strong> {{ leave.reason }}
+    </div>
+    <div class="detail-item">
+        <strong>Status:</strong> 
+        {% if leave.status == 'P' %}
+            <span style="color: #f39c12;">Pending</span>
+        {% elif leave.status == 'A' %}
+            <span style="color: #2ecc71;">Approved</span>
+        {% else %}
+            <span style="color: #e74c3c;">Rejected</span>
+        {% endif %}
+    </div>
+
+    <div class="btn-group">
+        {% if leave.status == 'P' %}
+        <form method="post" action="{% url 'leave_approve' leave.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-approve">Approve</button>
+        </form>
+
+        <form method="post" action="{% url 'leave_reject' leave.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-reject">Reject</button>
+        </form>
+        {% endif %}
+        <a href="{% url 'leave_list' %}" class="btn btn-back">Back to List</a>
+    </div>
+</div>
+{% endblock %}

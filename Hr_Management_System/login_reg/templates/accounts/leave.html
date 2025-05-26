@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .leave-container {
+        max-width: 700px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h2 {
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #2f3542;
+    }
+
+    form .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #f9f9f9;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        background: linear-gradient(135deg, #4CAF50, #2ecc71);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: linear-gradient(135deg, #43a047, #27ae60);
+    }
+
+    .messages {
+        margin-bottom: 20px;
+    }
+
+    .messages .success {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 12px;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="leave-container">
+    <h2>Apply for Leave</h2>
+
+    <div class="messages">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <small style="color:red;">{{ field.errors.0 }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit Request</button>
+    </form>
+</div>
+{% endblock %}

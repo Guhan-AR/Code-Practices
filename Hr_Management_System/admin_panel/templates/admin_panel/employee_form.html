@@ -1,0 +1,23 @@
+{% extends 'admin_panel/admin_base.html' %}
+
+{% block title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Employee{% endblock %}
+
+{% block breadcrumb_items %}
+<li class="breadcrumb-item active">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Employee</li>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Employee</h4>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'employee_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

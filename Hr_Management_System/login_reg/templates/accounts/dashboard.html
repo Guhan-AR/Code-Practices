@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="dashboard-title">Welcome, {{ request.user.username }}</h2>
+
+    <!-- Account Info Card -->
+    <div class="card mt-4 shadow-sm rounded">
+        <div class="card-body">
+            <h5 class="card-title text-primary">Account Information</h5>
+            <hr>
+            <p><strong>👤 Username:</strong> {{ request.user.username }}</p>
+            <p><strong>📧 Email:</strong> {{ request.user.email }}</p>
+            <p><strong>🕒 Last Login:</strong> {{ request.user.last_login|date:"F j, Y, g:i a" }}</p>
+            <a href="{% url 'attendance' %}" class="btn btn-lg mt-3 btn-success">📅 Go to Attendance</a>
+        </div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="card mt-4 shadow-sm rounded">
+        <div class="card-body">
+            <h5 class="card-title text-primary">📆 Calendar</h5>
+            <hr>
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      height: 500,
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek'
+      },
+      events: [
+        {
+        "title": "On Leave",
+        "start": "2025-05-20",
+        "end": "2025-05-22"
+        }
+      ],  // You can fetch events dynamically via Django JSON view later
+    });
+
+    calendar.render();
+  });
+</script>
+{% endblock %}

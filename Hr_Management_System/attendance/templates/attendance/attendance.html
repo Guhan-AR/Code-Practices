@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Attendance System</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title">Today's Attendance - {{ date|date:"F j, Y" }}</h5>
+            </div>
+            <div>
+                <button id="attendance-btn" class="btn btn-lg {% if current_session %}btn-danger{% else %}btn-success{% endif %}">
+                    {% if current_session %}Stop Session{% else %}Start New Session{% endif %}
+                </button>
+
+                {% if current_session %}
+                    <button id="break-btn" class="btn btn-lg {% if current_session.is_on_break %}btn-secondary{% else %}btn-warning{% endif %} ml-2">
+                        {% if current_session.is_on_break %}End Break{% else %}Start Break{% endif %}
+                    </button>
+                {% endif %}
+            </div>
+
+            {% if current_session %}
+                <p id="timer-display" class="mt-3">
+                    {% if current_session.duration %}
+                        {{ current_session.duration }}
+                    {% else %}
+                        00:00:00
+                    {% endif %}
+                </p>
+            {% endif %}
+
+            <table id="sessions-table" class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Total Break</th>
+                        <th>Work Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for session in sessions %}
+                    <tr>
+                        <td>{{ session.check_in }}</td>
+                        <td>{{ session.check_out|default:"In Progress" }}</td>
+                        <td>{{ session.total_break_time }}</td>
+                        <td>
+                            {% if session.duration %}
+                                {{ session.duration }}
+                            {% else %}
+                                In Progress
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Include jQuery and Bootstrap JS -->
+ <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.card {
+    border: none;
+    background: transparent;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+#attendance-btn, #break-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-bottom: 10px;
+}
+
+#attendance-btn:hover, #break-btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background-color: #27ae60;
+}
+.btn-success:hover {
+    background-color: #219150;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-warning {
+    background-color: #f39c12;
+}
+.btn-warning:hover {
+    background-color: #d68910;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+}
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+#timer-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2980b9;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.table thead {
+    background-color: #ecf0f1;
+}
+
+.table th, .table td {
+    padding: 16px;
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+</style>
+
+<script>
+    function formatTime(totalSeconds) {
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = Math.round(totalSeconds % 60);
+        return [h, m, s].map(n => n.toString().padStart(2, '0')).join(':');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const attendanceBtn = document.getElementById('attendance-btn');
+        const breakBtn = document.getElementById('break-btn');
+        const timerDisplay = document.getElementById('timer-display');
+        const originalTitle = document.title;
+
+        // Button handlers
+        attendanceBtn?.addEventListener('click', function () {
+            const action = this.textContent.includes('Start') ? 'start' : 'stop';
+
+            fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: `action=${action}`
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                });
+        });
+
+        breakBtn?.addEventListener('click', function () {
+            const action = this.textContent.includes('Start') ? 'start_break' : 'end_break';
+
+            fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: `action=${action}`
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        window.onBreak = data.on_break;
+                        this.textContent = window.onBreak ? 'End Break' : 'Start Break';
+                        this.classList.toggle('btn-warning');
+                        this.classList.toggle('btn-secondary');
+                    } else {
+                        alert(data.message);
+                    }
+                });
+        });
+
+        // Live Timer Logic
+        {% if current_session and current_session.check_in %}
+            let checkInTime = new Date("{{ current_session.check_in|date:'Y-m-d H:i:s' }}").getTime();
+            let totalBreak = {{ current_session.total_break_seconds|default:0 }};
+            let isOnBreak = {{ current_session.is_on_break|yesno:"true,false" }};
+            let breakStartTime = isOnBreak ? new Date().getTime() : null;
+
+            setInterval(function () {
+                let now = new Date().getTime();
+                let breakOffset = 0;
+
+                if (isOnBreak && breakStartTime) {
+                    breakOffset = (now - breakStartTime) / 1000;
+                }
+
+                let elapsedSeconds = Math.floor((now - checkInTime) / 1000) - totalBreak - breakOffset;
+                if (elapsedSeconds < 0) elapsedSeconds = 0;
+
+                const formattedTime = formatTime(elapsedSeconds);
+                if (timerDisplay) timerDisplay.textContent = formattedTime;
+                document.title = `Attendance - ${formattedTime}`;
+            }, 1000);
+        {% endif %}
+    });
+</script>
+
+
+{% endblock %}
