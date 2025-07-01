@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Workout</title>
+    <style>
+        script {
+            background-color: blue;
+        }
+
+        .js {
+            color: aqua;
+        }
+
+        #js {
+            background-color: azure;
+        }
+
+        a:link {
+            color: tomato;
+        }
+
+        a:visited {
+            color: rgb(11, 207, 233);
+        }
+
+        a:hover {
+            color: yellow;
+        }
+
+        a:active {
+            color: green;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            color: black;
+            display: flex;
+            justify-content:space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="js" id="js">
+        <script>
+            for (let a = 0; a < 5; a = a + 1) {
+
+                document.write("hii" + '\t');
+
+                console.log(a);
+
+            }
+
+        </script>
+    </h2>
+    <p>Hi</p>
+    <em id="Added"></em>
+    <script>
+        let z = {
+            'k': 'j',
+            'a':'a'
+        }
+        let a = document.getElementById("Added");
+        let b = 10;
+        let c = 20;
+        a.innerHTML = [b + c , z.k , z.a];
+        console.log(Object.keys(z),Object.values(z));
+        document.write(Object.keys(z),Object.values(z),"here see.");
+        for(let x in z){
+            console.log(x,':');
+            console.log(z[x],'\n');
+        }
+        let h = JSON.stringify(z);
+        console.log('stringified:',h);
+
+        function Details(name){
+            this.Name = name;
+        }
+        var me = new Details('Guhan');
+        console.log(Object.keys(me),Object.values(me))
+    </script>
+    <br>
+    <a href="#">Onumea ilayea</a>
+    <div class="container">
+        <div class="box"></div>
+        <br>
+        <div class="box"></div>
+        <br>
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

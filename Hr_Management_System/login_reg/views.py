@@ -1,18 +1,10 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .forms import LeaveRequestForm
+from django.shortcuts import redirect
 from django.contrib import messages
-from admin_panel.models import LeaveRequest,Employee
-from django.views.generic import ListView
+from admin_panel.models import LeaveRequest
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 
 
 def register_page(request):
@@ -64,32 +56,6 @@ def logout_user(request):
 @login_required(login_url='login')
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
-
-@login_required(login_url='login')
-def leave_page(request):
-    employee = Employee.objects.filter(user=request.user).first()
-
-    if not employee:
-        messages.error(request, "Only employees can apply for leave.")
-        return redirect('dashboard')  # or any other page you want
-
-    if request.method == 'POST':
-        form = LeaveRequestForm(request.POST)
-        if form.is_valid():
-            leave = form.save(commit=False)
-            leave.employee = employee  # link the employee properly
-            leave.status = 'P'  # P = Pending
-            leave.save()
-            messages.success(request, 'Leave request submitted successfully.')
-            return redirect('leave')
-    else:
-        form = LeaveRequestForm()
-
-    return render(request, 'accounts/leave.html', {'form': form})
-
-
-
-
 
 
 @login_required(login_url='login')

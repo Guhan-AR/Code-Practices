@@ -90,7 +90,7 @@ class LeaveRequestDetailView(AdminRequiredMixin, DetailView):
 class LeaveRequestApproveView(AdminRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         leave = LeaveRequest.objects.get(pk=pk)
-        leave.status = 'Approved'
+        leave.status = 'A'
         leave.save()
         messages.success(request, "Leave request approved.")
         return HttpResponseRedirect(reverse('leave_list'))
@@ -98,7 +98,7 @@ class LeaveRequestApproveView(AdminRequiredMixin, View):
 class LeaveRequestRejectView(AdminRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         leave = LeaveRequest.objects.get(pk=pk)
-        leave.status = 'Rejected'
+        leave.status = 'R'
         leave.save()
         messages.warning(request, "Leave request rejected.")
         return HttpResponseRedirect(reverse('leave_list'))
@@ -110,4 +110,3 @@ class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
     def form_valid(self, form):
         messages.success(self.request, "Your password was changed successfully.")
         return super().form_valid(form)
-

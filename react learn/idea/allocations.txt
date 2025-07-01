@@ -1,0 +1,15 @@
+bharath:
+logo
+colour palette
+ui ux
+
+Guhan:
+react
+verification of mail id and phone number
+messaging
+enrypt : aes256
+notification system
+
+
+
+pandas
