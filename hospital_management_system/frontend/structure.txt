@@ -1,0 +1,11 @@
+1.Admin (Super User) 
+2. Receptionist 
+3. Doctor 
+4. Nurse 
+5. Pharmacist 
+6. Lab Technician 
+7. Patient 
+8. Accountant 
+9. Radiologist 
+10. HR/Staff Manager 
+11. Branch Manager

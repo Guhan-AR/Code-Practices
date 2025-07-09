@@ -1,0 +1,118 @@
+/* src/App.css */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Form Styles */
+.post-form {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.post-form input[type="text"],
+.post-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Important for padding */
+}
+
+.post-form input[type="file"] {
+  margin-bottom: 1rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #3498db;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button[type="button"] {
+  background-color: #95a5a6;
+}
+
+button[type="button"]:hover {
+  background-color: #7f8c8d;
+}
+
+/* Posts List Styles */
+.posts-list {
+  margin-top: 2rem;
+}
+
+.post-item {
+  background: #fdfdfd;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+}
+
+.post-item h3 {
+  margin-top: 0;
+  color: #2980b9;
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.post-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.post-actions button {
+  background-color: #e74c3c;
+}
+
+.post-actions button:first-of-type {
+  background-color: #f39c12;
+}
+
+.post-actions button:first-of-type:hover {
+  background-color: #e67e22;
+}
+
+.post-actions button:hover {
+  background-color: #c0392b;
+}

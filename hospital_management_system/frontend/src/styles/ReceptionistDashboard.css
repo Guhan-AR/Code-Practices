@@ -1,0 +1,146 @@
+/* 
+  New Color Palette:
+  - Main Background: #ECFAE5 (lightest green)
+  - Subtle Backgrounds (e.g., table headers): #DDF6D2
+  - Borders & Secondary Accents: #CAE8BD
+  - Primary Accent (topbar, buttons, main borders): #B0DB9C (darkest green)
+*/
+
+.reception-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #ECFAE5; /* Main background from new palette */
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: #B0DB9C; /* Primary accent color */
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+  color: #1e293b; /* Dark color for high contrast and readability */
+}
+
+.topbar span {
+  font-weight: 500;
+  color: #374151; /* Darker secondary text for readability */
+  font-size: 0.95rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #ffffff; /* White provides clean contrast for content */
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h4 {
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.stat-card p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.section-box {
+  background: #ffffff;
+  border-left: 4px solid #B0DB9C; /* Primary accent border */
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+.section-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form input,
+.form select {
+  padding: 0.5rem;
+  border: 1px solid #CAE8BD; /* Themed border color */
+  border-radius: 6px;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.form button {
+  padding: 0.5rem 1rem;
+  background-color: #B0DB9C; /* Primary accent for action button */
+  color: #1e293b;           /* Dark text for contrast */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.appointment-table th,
+.appointment-table td {
+  border: 1px solid #CAE8BD; /* Themed border color */
+  padding: 0.6rem;
+  text-align: left;
+}
+
+.appointment-table th {
+  background-color: #DDF6D2; /* Subtle background from palette */
+  color: #374151;
+}
+
+.appointment-table td button {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #CAE8BD; /* Secondary accent color for edit */
+  color: #1e293b;
+}
+
+/* Note: The delete button color is kept as red for crucial UX. 
+   Red is a universal indicator for destructive actions. 
+   Using green could be confusing to the user. */
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}

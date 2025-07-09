@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <a href="hooktry.html">Other page</a>
+    <p id="para">happy_learning</p>
+    <button onclick="b()" id="the_button">button</button>
+
+    <!-- this fron static -->
+    <p id="demo"></p>
+
+    <script>
+
+        function b(){
+            let variable = document.createElement('h2');
+            let variable_content = document.createTextNode('this is h2');
+            var kk = document.createElement("button");
+            kk.innerHTML = "Button";
+            document.body.appendChild(kk);
+            variable.appendChild(variable_content);
+            document.body.appendChild(variable);
+            let btn = document.getElementById("the_button");
+            btn.remove();
+            let e = document.querySelector("button");
+            e.style.backgroundColor = "Green";
+            e.style.color = "White";
+            console.log(e);
+            e.innerHTML="Green";
+
+        };
+
+        console.log("happy---learning");
+
+        var para = document.createElement('p');
+        var para_text = document.createTextNode('with javascript');
+        
+        para.appendChild(para_text);
+        document.body.appendChild(para);
+
+        const header = document.createElement('header')
+        const shadowRoot = header.attachShadow({mode: 'open'})
+        shadowRoot.innerHTML = '<h1>Hello Shadow DOM</h1>'
+
+        let a = document.getElementById('para');
+        console.log(a);
+        a.innerHTML="happy learning";
+        a.innerText="good learning";
+
+        class Car{
+            normal_method(){
+                console.log(hii);
+            }
+            constructor(name){
+                this.name = name;
+            }
+            static private_method(x){
+                return x;
+            }
+            accessing_function(x) {
+                console.log('coming');
+                return private_method(x)
+            }
+        }
+        var car_object = new Car('innova');
+        console.log(car_object.accessing_function(25));
+        document.getElementById('demo').innerHTML = car_object.private_method(25);
+
+        
+
+
+    </script>
+</body>
+</html>
