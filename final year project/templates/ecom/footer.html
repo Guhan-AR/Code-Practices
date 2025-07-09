@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style>
+
+    /* Footer Styles */
+footer {
+  padding: 2rem 0;
+  background-color: #131A22;
+  color: white;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+/* Table Styles */
+footer table {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  display: table;
+}
+
+footer thead td {
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding-bottom: 1rem;
+  color: #DDD;
+}
+
+footer tbody td {
+  padding: 0.3rem 0;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+footer tbody td:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Footer Text */
+footer p {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #999;
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  footer table {
+    width: 95%;
+    display: block;
+  }
+  
+  footer thead, footer tbody {
+    display: block;
+  }
+  
+  footer tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  
+  footer td {
+    text-align: left;
+    padding: 0.5rem 1rem;
+  }
+  
+  footer thead td {
+    border-bottom: 1px solid #444;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+ }
+    /*---------------------------------------
+   Social section
+-----------------------------------------*/
+    footer {
+      padding: 0px 0px 0px 0px;
+      background-color: black;
+      margin: 0px;
+  
+    }
+    p {
+      text-align: center;
+      color: white;
+    }
+    td {
+      text-align: center;
+      color: white;
+    }
+    th {
+      text-align: center;
+      color: white;
+    }
+    table{
+      display:inline-table;
+    }
+  </style>
+</head>
+
+<footer>
+  <br>
+
+  <table>
+    <thead>
+      <td><b>Get to know us</b></td>
+      <td><b>Connect with us</b></td>
+      <td><b>Make Money with us</b></td>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="{% url 'aboutus' %}">About</a></td>
+        <td>Instagram</td>
+        <td>Sell on amazon</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Whatsapp</td>
+        <td>Search</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Facebook</td>
+        <td></td>
+      </tr>
+      
+    </tbody>
+  </table>
+<p>Updated by Guhan.A.R</p>
+</html>

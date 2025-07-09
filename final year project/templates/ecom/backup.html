@@ -1,0 +1,343 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    * {box-sizing:border-box}
+
+.slideshow-container {
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+/* Hide the images by default */
+.mySlides {
+display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 15px;
+    color: aqua;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* Position the "next button" to the right */
+.next {
+right: 0;
+/* border-radius: 3px 0 0 3px; */
+}
+.prev {
+    left: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+color: #f2f2f2;
+font-size: 15px;
+padding: 8px 12px;
+position: absolute;
+bottom: 8px;
+width: 100%;
+text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+cursor: pointer;
+height: 15px;
+width: 15px;
+margin: 0 2px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+animation-name: fade;
+animation-duration: 1.5s;
+}
+
+@keyframes fade {
+from {opacity: .4}
+to {opacity: 1}
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 20px;
+}
+
+.product-image-container {
+    flex: 1 1 400px;
+    text-align: center;
+}
+
+.product-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.product-details {
+    flex: 1 1 400px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.price-section {
+    margin: 20px 0;
+}
+
+.price {
+    font-size: 1.8rem;
+    color: #28a745;
+    margin-right: 10px;
+}
+
+.old-price {
+    font-size: 1.4rem;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.product-description {
+    margin: 20px 0;
+}
+
+.product-description-p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.action-buttons {
+    margin-top: 30px;
+}
+
+.add-to-cart-btn {
+    background-color: #ff6f61;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #e65550;
+}
+
+/* Comment section styles */
+.comment-section {
+    margin: 50px auto;
+    max-width: 700px;
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.comment-submit-btn {
+    width: 150px;
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.comment-item {
+    margin-top: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-item p {
+    margin: 5px 0;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 400px; /* fixed height */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+
+</style>
+
+<div class="product-container">
+    <div class="product-image-container">
+        <div class="slideshow-container">
+            <!-- Main Image -->
+            <div class="mySlides">
+                <img src="{% static product.product_image.url %}" alt="">
+            </div>
+
+            <!-- addition image -->
+
+            {% for img in images %}
+            <div class="mySlides">
+                <img src="{% static img.image.url %}" alt="" height="300px">
+            </div>
+            {% endfor %}
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="product-details">
+        <h1 class="product-title">{{ product.name }}</h1>
+        
+        <div class="price-section">
+            <span class="price">${{ product.price }}</span>
+            {% if product.old_price %}
+                <span class="old-price">${{ product.old_price }}</span>
+            {% endif %}
+        </div>
+        
+        <div class="product-description">
+            <h3><b>Category:</b> {{ product.category }}</h3>
+            <h3><b>Description:-</b></h3>
+            <p class="product-description-p">{{ product.description|linebreaksbr }}</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{% url 'add-to-cart' product.id %}"><button class="add-to-cart-btn">Add to Cart</button></a>
+        </div>
+    </div>
+</div>
+
+<!-- Comment sections (keep your existing code) -->
+<div class="comment-section">
+    <p>Comment your experience</p>
+    <form action="" method="POST" class="comment-form">
+        {% csrf_token %}
+        <textarea name="comment" placeholder="Comment here..." class="comment-textarea"></textarea>
+        <button type="submit" class="comment-submit-btn">Submit</button>
+    </form>
+</div>
+<div class="comment-section">
+    <p>Comments:</p>
+    {% for comment in comments %}
+        <div class="comment-item">
+            <p><strong>{{ comment.name }}</strong>: {{ comment.comment }}</p>
+            <p><small>{{ comment.created_at }}</small></p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+</div>
+
+
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    }
+  </script>
+
+
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+<br>
+{%include 'ecom/admin_dashboard_cards.html'%}
+<br>
+<br>
+<style>
+
+.table-headerbg {
+  background-color: #708091;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+}
+
+.table-head {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#dev-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#dev-table thead tr {
+  background-color: #f8f9fa;
+}
+
+#dev-table th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  color: #343a40;
+  font-weight: 600;
+}
+
+#dev-table td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+#dev-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.label {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.label-info {
+  background-color: #5bc0de;
+  color: white;
+}
+
+.label-success {
+  background-color: #5cb85c;
+  color: white;
+}
+
+
+.label-primary {
+  background-color: #337ab7;
+  color: white;
+}
+
+img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+</style>
+<div>
+    <div class="panel panel-danger" >
+      <div class="table-headerbg" style="text-align:center;">
+        <h6 class="table-head">Recent Booking</h6>
+      </div>
+      <table class="table table-hover table-bordered" id="dev-table">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Contact</th>
+            <th>Shipment Address</th>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        {% for product,customer,order in data %}
+        <tr>
+          {% for c in customer %}
+          <td> {{c.get_name}}</td>
+          <td>{{c.mobile}}</td>
+          <td>{{order.address}}</td>
+
+          {% endfor %}
+          {% for p in product %}
+          <td> {{p.name}}</td>
+          <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+
+          {% if order.status == 'Pending'%}
+          <td> <span class="label label-info">{{order.status}}</span></td>
+          {% elif order.status == 'Delivered' %}
+          <td> <span class="label label-success">{{order.status}}</span></td>
+          {% elif order.status == 'Out for Delivery' %}
+          <td> <span class="label label-warning">{{order.status}}</span></td>
+          {%else%}
+            <td> <span class="label label-primary">{{order.status}}</span></td>
+          {%endif%}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+  </div>
+</div>
+{% endblock content %}

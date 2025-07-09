@@ -1,0 +1,90 @@
+{% extends 'ecom/admin_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 80px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .form-container label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container input[type="file"],
+    .form-container select,
+    .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-container textarea {
+      resize: vertical;
+    }
+
+    .form-container button[type="submit"] {
+      display: block;
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media screen and (max-width: 640px) {
+      .form-container {
+        margin: 30px 20px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<div class="form-container">
+  <h2>Update Product</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ productForm }}
+
+    <label for="additional_images">Add More Images:</label>
+    <input type="file" name="additional_images" multiple>
+
+    <button type="submit">Update Product</button>
+  </form>
+</div>
+
+{% endblock content %}
