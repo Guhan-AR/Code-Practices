@@ -3,7 +3,7 @@ class Abi:
     def school():
         print("12th grade")
 
-    def college():
+    def college(c):
         c+=2
         print("upcoming",c)
     
@@ -14,5 +14,5 @@ class Abi:
 # Abi.college()
 c=10
 # print(Abi.add(10,8))
-Abi.college()
+Abi.college(c)
 print(c)
