@@ -19,7 +19,7 @@ class Shift(models.Model):
 class Doctor(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
-    department = models.ForeignKey(Department,on_delete=models.PROTECT,related_name='doctors')
+    department = models.ForeignKey(Department,on_delete=models.PROTECT,related_name='doctors',blank=True)
     salary = models.IntegerField()
     shift = models.ForeignKey(Shift,on_delete=models.SET_NULL,null=True,blank=True)
     phone_number = models.CharField(max_length=10)

@@ -9,12 +9,12 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
-    # API URLS
-    path('auth/', include('Login.urls')),
-    path('', include('Doctor.urls')),
 
-    # JWT Token URLS
+    # All API URLs are now neatly under '/api/'
+    path('api/auth/', include('Login.urls')),
+    path('api/', include('Doctor.urls')), # Assuming Doctor is another app with urls.py
+
+    # JWT Token URLS (also under /api/)
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
